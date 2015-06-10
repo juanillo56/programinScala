@@ -4,11 +4,11 @@ for{
 } {
 	val str = x match {
 		case 1		=> "int 1"
-		case i: Int 	=> "other int: "+ i
-		case d: Double 	=>"a double " + x
+		case _: Int 	=> "other int: "+ x
+		case _: Double 	=>"a double " + x
 		case "one" 	=> "string one"
-		case  s: String => "other string: "+s
-		case unexpected	=> "unexpected value: " +unexpected
+		case  _: String => "other string: " + x
+		case _		=> "unexpected value: " + x
 	}
 	println(str)
 }
