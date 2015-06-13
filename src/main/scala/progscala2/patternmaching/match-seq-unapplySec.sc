@@ -16,3 +16,19 @@ def windows[T](seq: Seq[T]): String =
 for (seq <- Seq(nonEmptyList, emptyList, nonEmptyMap.toSeq)) {
 	println(windows(seq))
 }
+
+// segunda version el metodo donde se elimina la creacion explicita del Seq
+// utiliando el contructor +:
+println("\n\n segunda version del metodo, utlizando constructor +:")
+
+def windows2[T](seq: Seq[T]): String = seq  match {
+		case head1 +: head2 +: tail => s"($head1, $head2), " + windows2(seq.tail)
+		case head +: tail => s"($head, _), "+ windows2(seq.tail)
+		case Nil => "Nil"
+	}
+
+
+for (seq <- Seq(nonEmptyList, emptyList, nonEmptyMap.toSeq)) {
+	println(windows2(seq))
+}
+
